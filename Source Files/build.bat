@@ -33,12 +33,25 @@ if %ERRORLEVEL% NEQ 0 (
 echo 32-bit build successful!
 echo.
 
-REM ── Summary ───────────────────────────────────────────────────────
+REM ── Patch x86 exports ──────────────────────────────────────────
+REM Arma 3 Publisher requires stdcall-decorated names (_RVExtension@12)
+REM for 32-bit DLLs. NativeAOT/MSVC always strip stdcall decoration,
+REM so we patch the PE export table directly after building.
+echo Patching 32-bit DLL with stdcall-decorated exports...
+python "%~dp0patch_exports.py" "%~dp0bin\x86\Release\net10.0\win-x86\publish\digii_file.dll"
+
+if %ERRORLEVEL% NEQ 0 (
+    echo Export patching FAILED!
+    exit /b 1
+)
 echo.
-echo Both builds successful!
-echo   64-bit: extensions\digii_file\bin\x64\Release\net10.0\win-x64\publish\digii_file.dll
-echo   32-bit: extensions\digii_file\bin\x86\Release\net10.0\win-x86\publish\digii_file.dll
+
+REM ── Copy DLLs to project root ────────────────────────────────────
+echo Copying DLLs to project root...
+copy /Y "%~dp0bin\x64\Release\net10.0\win-x64\publish\digii_file.dll" "%~dp0..\..\digii_file_x64.dll"
+copy /Y "%~dp0bin\x86\Release\net10.0\win-x86\publish\digii_file.dll" "%~dp0..\..\digii_file.dll"
+
 echo.
-echo To deploy, copy to your mod root folder:
-echo   64-bit DLL → digii_file_x64.dll
-echo   32-bit DLL → digii_file.dll
+echo Both builds successful! DLLs copied to project root:
+echo   digii_file_x64.dll (64-bit)
+echo   digii_file.dll     (32-bit)

@@ -8,19 +8,19 @@
 /LIBPATH:"C:\Program Files (x86)\Windows Kits\10\\lib\10.0.26100.0\\um\x64"
 /SOURCELINK:"obj\x64\Release\net10.0\win-x64\native\digii_file.sourcelink"
 /DLL
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\dllmain.obj"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\bootstrapperdll.obj"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\Runtime.WorkstationGC.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\eventpipe-disabled.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\Runtime.VxsortDisabled.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\standalonegc-disabled.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\aotminipal.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\zlibstatic.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\brotlicommon.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\brotlienc.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\brotlidec.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\System.Globalization.Native.Aot.lib"
-"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.2/runtimes/win-x64/\native\System.IO.Compression.Native.Aot.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\dllmain.obj"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\bootstrapperdll.obj"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\Runtime.WorkstationGC.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\eventpipe-disabled.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\Runtime.VxsortDisabled.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\standalonegc-disabled.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\aotminipal.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\zlibstatic.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\brotlicommon.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\brotlienc.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\brotlidec.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\System.Globalization.Native.Aot.lib"
+"C:\Users\atrix\.nuget\packages\microsoft.netcore.app.runtime.nativeaot.win-x64\10.0.3/runtimes/win-x64/\native\System.IO.Compression.Native.Aot.lib"
 "advapi32.lib"
 "bcrypt.lib"
 "crypt32.lib"
@@ -40,7 +40,7 @@
 /MERGE:.managedcode=.text /MERGE:hydrated=.bss
 /DEBUG
 /INCREMENTAL:NO
-/NATVIS:"C:\Users\atrix\.nuget\packages\microsoft.dotnet.ilcompiler\10.0.2\build\NativeAOT.natvis"
+/NATVIS:"C:\Users\atrix\.nuget\packages\microsoft.dotnet.ilcompiler\10.0.3\build\NativeAOT.natvis"
 /IGNORE:4104
 /CETCOMPAT
 /NODEFAULTLIB:libucrt.lib

@@ -1,0 +1,1 @@
+c:\Users\atrix\OneDrive\Documents\GitHub\DiGii_exportZeus\DiGii_exportZeus\extensions\digii_file\bin\Release\net10.0\win-x86\publish\digii_file.dll

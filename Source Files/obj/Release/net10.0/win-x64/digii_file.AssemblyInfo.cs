@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("digii_file")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d32a7e83567b4c259d6259291cc13617b7400410")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bf74c2be4cd10f809b50e43f3aa03e715828a483")]
 [assembly: System.Reflection.AssemblyProductAttribute("digii_file")]
 [assembly: System.Reflection.AssemblyTitleAttribute("digii_file")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

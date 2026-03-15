@@ -177,6 +177,30 @@ public static class Extension
         return Marshal.PtrToStringAnsi((IntPtr)ptr) ?? "";
     }
 
+    /// <summary>
+    /// Strips Arma's callExtension argument quoting from a string.
+    ///
+    /// When Arma passes string arguments via callExtension (RVExtensionArgs),
+    /// it wraps each argument in double-quotes and doubles any inner quotes:
+    ///   SQF value "hello"   → DLL receives: "hello"     (with outer quotes)
+    ///   SQF value a"b       → DLL receives: "a""b"      (inner " doubled)
+    ///
+    /// This method reverses that transformation:
+    ///   1. If the string starts and ends with ", strip the outer quotes
+    ///   2. Replace all "" with " (un-double the inner quotes)
+    ///
+    /// If the string does not appear to be Arma-quoted (doesn't start and
+    /// end with "), it is returned unchanged as a safety fallback.
+    /// </summary>
+    private static string UnquoteArmaArg(string s)
+    {
+        if (s.Length >= 2 && s[0] == '"' && s[s.Length - 1] == '"')
+        {
+            return s.Substring(1, s.Length - 2).Replace("\"\"", "\"");
+        }
+        return s;
+    }
+
     // ── Arma 3 Extension Entry Points ────────────────────────────────────
     //
     // These are the three functions that Arma 3 expects every extension DLL
@@ -188,7 +212,11 @@ public static class Extension
     /// RVExtensionVersion — Called once by Arma 3 when the extension is first loaded.
     /// Arma displays this version in its log file to confirm the extension loaded.
     /// </summary>
+#if TARGET_X86
+    [UnmanagedCallersOnly(EntryPoint = "RVExtensionVersion", CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
+#else
     [UnmanagedCallersOnly(EntryPoint = "RVExtensionVersion")]
+#endif
     public static unsafe void RVExtensionVersion(byte* output, int outputSize)
     {
         WriteOutput(output, outputSize, "1.0.0");
@@ -204,7 +232,11 @@ public static class Extension
     ///   - "path"        → returns the exports folder path (debugging)
     ///   - "version"     → returns the version string
     /// </summary>
+#if TARGET_X86
+    [UnmanagedCallersOnly(EntryPoint = "RVExtension", CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
+#else
     [UnmanagedCallersOnly(EntryPoint = "RVExtension")]
+#endif
     public static unsafe void RVExtension(byte* output, int outputSize, byte* function)
     {
         try
@@ -290,7 +322,11 @@ public static class Extension
     /// Returns 0 on success, -1 on error.
     /// The actual result message is written to the output buffer.
     /// </summary>
+#if TARGET_X86
+    [UnmanagedCallersOnly(EntryPoint = "RVExtensionArgs", CallConvs = new[] { typeof(System.Runtime.CompilerServices.CallConvStdcall) })]
+#else
     [UnmanagedCallersOnly(EntryPoint = "RVExtensionArgs")]
+#endif
     public static unsafe int RVExtensionArgs(
         byte* output, int outputSize,
         byte* function,
@@ -303,10 +339,12 @@ public static class Extension
 
             // Read all arguments into a C# string array.
             // Arma passes arguments as an array of null-terminated byte pointers.
+            // UnquoteArmaArg strips the "..." wrapping and undoubles "" that Arma's
+            // callExtension adds around each argument when passing to the DLL.
             string[] args = new string[argc];
             for (int i = 0; i < argc; i++)
             {
-                args[i] = ReadString(argv[i]);
+                args[i] = UnquoteArmaArg(ReadString(argv[i]));
             }
 
             switch (command)

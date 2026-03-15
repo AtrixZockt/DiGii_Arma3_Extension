@@ -15,4 +15,9 @@
     <StackTraceSupport>false</StackTraceSupport>
   </PropertyGroup>
 
+  <PropertyGroup Condition="$(RuntimeIdentifier.Contains('x86'))">
+    <DefineConstants>$(DefineConstants);TARGET_X86</DefineConstants>
+  </PropertyGroup>
+
+
 </Project>
